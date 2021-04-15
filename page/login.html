@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-15 08:44:41
- * @LastEditTime: 2021-04-15 13:30:43
+ * @LastEditTime: 2021-04-15 16:35:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \htdocs\mynote\在此.html
@@ -14,8 +14,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!--这里导入的是一个模块，因为要导入的模块得是一个模块，才能用import导入其它模块或js-->
-    <script type="module" src="../js/interaction/login.js"></script>
+    <!--这里导入的是一个模块，因为要导入的模块得是一个模块，才能用import导入其它模块或js,坑点，要//才行-->
+    <script type="module" src="/js//interaction//login.js"></script>
     <style type="text/css">
         body {
             background-color: #f1f1f1;
@@ -79,10 +79,10 @@
 <body>
     <div class="loginBox">
         <span>你的笔记本！</span>
-        <form action="/php_service/index/login.php" method="post">
+        <form>
             <input type="text" name="username" placeholder="这位笔友，请输入你的用户名..."/>
             <input type="password" name="password" placeholder="开始大门，自然少不了密码..."/>
-            <button type="submit">登录</button>
+            <button type="button" id="toLogin">登录</button>
         </form>
     </div>
 </body>
