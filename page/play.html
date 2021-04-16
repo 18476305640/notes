@@ -1,0 +1,128 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-04-16 10:43:24
+ * @LastEditTime: 2021-04-16 13:18:04
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Xclientd:\App\static\App\php\httpd-2.4.46-o111j-x64-vc15\Apache24\htdocs\page\play.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module" src="/js/interaction/play.js"></script>
+    <style type="text/css">
+        
+        .playBox {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-image: url("/resource/imgs/login/login_background.jpg");
+            background-size: 100% 100%;
+            overflow: hidden;
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+
+        }
+        .playBox>* {
+            display: block;
+            width: 80%;
+            margin: 10px 0px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .playBox>h2 {
+            font-size: 30px;
+            text-align: center;
+            margin-top: 30px;
+            color: #ffffff;
+        }
+        .playBox>textarea {
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .playBox>textarea:nth-of-type(1) {
+            height: 90px;
+        }
+        .playBox>textarea:nth-of-type(2) {
+            height: 300px;
+        }
+        .playBox>div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            text-align: center;
+        }
+        .playBox>div>* {
+            width: 100px;
+            height: 30px;
+            margin: 0;
+            padding: 0;
+            margin: 0px 10px;
+        }
+        .to>button {
+            width: 40px;
+            height: 200px;
+            position: absolute;
+            top: calc(50% - 100px);
+            border: none;
+            transition: all 0.5s;
+            opacity: 0.05;
+            background-color: #ced932;
+            
+        }
+        .to>button:hover {
+            opacity: 0.8;
+        }
+        .to>button:nth-of-type(1) {
+            left: 0px;
+            
+        }
+        .to>button:nth-of-type(2) {
+            right: 0px;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div class="playBox">
+        <h2>进阶模式</h2>
+        <input type="hidden" id="item_id"/>
+        <textarea id="title"></textarea>
+        <textarea id="content"></textarea>
+        <div>
+            <select id="notes" name="note">
+                <!--这里是分类-->
+            </select>
+            <select>
+                <option>星降序</option>
+                <option>星升序</option>
+            </select>
+            <select>
+                <option>进阶模式</option>
+                <option>加星模式</option>
+              
+            </select>
+            <button id="resetCurrent">重新开始</button>
+            <button id="update">修改</button>
+            <button id="add">添加</button>
+            <button id="next">下一条</button>
+            <button>上星</button>     
+        </div>
+    </div>
+    <div class="to">
+        <button id="toToggle">用户切换</button>
+        <button>概览</button>
+    </div>
+</body>
+</html>

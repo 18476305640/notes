@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-04-15 09:45:59
+ * @LastEditTime: 2021-04-16 09:50:29
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \Xclientd:\App\static\App\php\httpd-2.4.46-o111j-x64-vc15\Apache24\htdocs\resource\js\cookie-utils.js
+ */
 
 export default {
     set: function(key,value,date_second,path) {
@@ -5,7 +13,7 @@ export default {
         var d = new Date();
         d.setTime(d.getTime()+date_second*1000);
         //设置cookie
-        document.cookie= key+"="+value+"; expires="+d.toGMTString()+"; path="+(path==undefined?path:null);
+        document.cookie= key+"="+value+"; expires="+d.toGMTString()+"; path="+(path==undefined?null:path);
     },
     get: function(cname) {
         var name = cname + "=";

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-15 09:00:14
- * @LastEditTime: 2021-04-15 20:01:07
+ * @LastEditTime: 2021-04-16 09:44:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \htdocs\mynote\js\commons\request.js
@@ -27,13 +27,13 @@ Function.__proto__.wait = function(obj,name,requestNumber) {
     };
     return geting();    
 }
-export default function(method,url,data,waitNumber) {
+export default function(method,url,data,waitNumber="600") {
     if(url == null && method != null) {
         throw new Error("request 参数错误！");
     }
     var obj = {
         ajaxResult:$.ajax({
-            url:"http://zjazn.cn.utools.club/"+url,
+            url:"http://localhost/"+url,
             type:method,
             data:data,
             dataType:'json',

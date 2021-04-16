@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-15 08:44:41
- * @LastEditTime: 2021-04-15 16:35:55
+ * @LastEditTime: 2021-04-16 12:26:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \htdocs\mynote\在此.html
@@ -17,30 +17,27 @@
     <!--这里导入的是一个模块，因为要导入的模块得是一个模块，才能用import导入其它模块或js,坑点，要//才行-->
     <script type="module" src="/js//interaction//login.js"></script>
     <style type="text/css">
-        body {
-            background-color: #f1f1f1;
-        }
         /*请在此书写你的css*/
         .loginBox {
             width: 400px;
-            margin: 30px auto;
-            height: 500px;
-            border-radius: 4px 25px 25px 4px;
-            position: relative;
+            height: 300px;
+            border-radius:10px;
+            position: absolute;
+            left: 50px;
+            top: calc(50% - 150px);
             overflow: hidden;
-            background-image: url("/resource/imgs/login/login_background.jpg");
+            background-color: rgba(255, 255, 255,0.5);
             background-size: 100% 100%;
             background-repeat: no-repeat;
 
-            box-shadow: 10px 8px 5px #808080;
         }
         .loginBox>span {
             display: block;
             width: 100%;
             text-align: center;
-            line-height: 40px;
-            font-size: 25px;
-            color: #ffffff;
+            line-height: 60px;
+            font-size: 20px;
+            color: #010101;
         }
         .loginBox>form {
             width: 100%;
@@ -48,16 +45,16 @@
             left: 0px;
             right: 0px;
             bottom: 0px;
-            top: 40px;
+            top: 60px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            align-content: center;
+            align-content: flex-start;
 
         }
         
-        .loginBox>form>input {
-            width: 90%;
+        .loginBox>form>* {
+            width: 80%;
             height: 30px;
             margin: 15px 0px ;
             border-radius: 5px;
@@ -69,21 +66,56 @@
             height: 30px;
             margin: 15px 0px ;
             border: none;
+            background-color: #ffffff;
         }
-        .loginBox>form>* {
-            box-shadow: 3px 3px 2px #808080;
+        .global {
+            position: absolute;
+
+            left: 0px;
+            right: 0px;
+            top: 0px;
+            bottom: 0px;
+
+            background-image: url("/resource/imgs/login/loginBodyBackground.jpg");
+            background-size: 100% 100%;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+        .hiddle {
+            display: block;
+            width: 0px;
+            height: 0px;
+            padding: 0px;
+            margin: 0px;
+            overflow: hidden;
+        }
+        form>div {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            transition: all 3s;
             
+        }
+        form>div>button {
+            width: 30%;
+            margin: 0px 10px;
+            border: none;
         }
     </style>
 </head>
 <body>
-    <div class="loginBox">
-        <span>你的笔记本！</span>
-        <form>
-            <input type="text" name="username" placeholder="这位笔友，请输入你的用户名..."/>
-            <input type="password" name="password" placeholder="开始大门，自然少不了密码..."/>
-            <button type="button" id="toLogin">登录</button>
-        </form>
+    <div class="global">
+        <div class="loginBox">
+            <span>你的笔记本！</span>
+            <form>
+                <input type="text" name="username" placeholder="这位笔友，请输入你的用户名..."/>
+                <input type="password" name="password" placeholder="开始大门，自然少不了密码..."/>
+                <div>
+                    <button type="button" id="toLogin">开始登录</button>
+                    <button type="button" class="hiddle" id="used">刚刚账号</button>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
