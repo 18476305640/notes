@@ -9,7 +9,7 @@ $currentUser = $result['data']['user'];
 if($result['code'] == 666) {
     //账号有效，获取信息返回
     $user = 1;
-    $itemx = array('user'=>$user);
+    $itemx = array('user'=>$user,'note'=>$_GET['note']);
     $res = getByLimitNumber($itemx);
     echo json_encode($res);
  

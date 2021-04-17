@@ -13,7 +13,7 @@ $(function() {
         note:1
     };
     if(loginData.isLogin) {
-        //账号登录状态正常
+        //--------账号登录状态正常---------
         //获取分类显示
         var notes = {
             user:{
@@ -65,10 +65,8 @@ $(function() {
                 title:page_data.title,
                 content:page_data.content
             };
-            console.log(insert_data);
             var state = request("post","php_service/play/play_insert.php",insert_data);
             if(state) {
-                console.log(state);
                 alert("添加成功！");
             }
             
@@ -92,27 +90,66 @@ $(function() {
                 title:item_data.title,
                 content:item_data.content
             };
+            console.log(update_data);
             var state = request("post","php_service/play/play_update.php",update_data);
+            console.log(state);
             if(state.code == 666) {
-                console.log(state);
                 alert("更新成功！");
             }else {
                 alert("更新失败！");
             }
         });
+        $("#delete").click(function() {
+            if(window.confirm("确认要删除吗？")) {
+                var item_data = getPage();
+                var  delete_data = {
+                    user: {
+                        user:loginData.data.user,
+                        lock:loginData.data.lock
+                    },
+                    id:item_data.item
+                };
+                var state = request("post","php_service/play/play_delete.php",delete_data);
+                if(state.code == 666) {
+                    alert("删除成功！");
+                    limit.record = Number.parseInt(getNumberByLimit(limit));
+                    
+                    if(limit.start >= (limit.record-1)) {
+                        limit.start--;
+                        show(limit);
+                    }
+                }else {
+                    alert("删除失败！");
+                }
+
+            }
+        });
+            
+        
+
+
+
+
+
+
+
+
     }else {
-        console.log("未登录！");
 
         setTimeout(function() {
             window.location.href="/page/login.html";
         },50);
     }
+
+
+
+
+    //--------------- 函数区 -----------------
     function show(show_limit) {
         //查询可查询的记录数
         limit.record = Number.parseInt(getNumberByLimit(show_limit));
         //至少有一条才可以查询
         if(limit.record>0 && (limit.start+1)<=limit.record) {
-            console.log(limit);
             var result = request("get","php_service/play/play_get.php",show_limit);
             setPage(result[0].title,result[0].content,result[0].id);
 

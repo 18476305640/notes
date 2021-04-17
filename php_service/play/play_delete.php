@@ -10,11 +10,12 @@ $result = root($_POST['user']);
 $currentUser = $result['data'];
 
 if($result['code'] == 666) {
-    //账号有效，获取信息返回
-    $update_data = array('user'=>1,'note'=>$_POST['note'],'id'=>$_POST['id'],'title'=>$_POST['title'],'content'=>$_POST['content']);
-    $update_status = update($update_data);
     
-    echo json_encode(array('code'=>666,'data'=>'success'));
+    //账号有效，获取信息返回
+    $delete_data = array('user'=>1,'id'=>$_POST['id']);
+    $delete_status = delete($delete_data);
+    echo json_encode(array('code'=>666,'data'=>$delete_status));
+    
 
 }else {
     
