@@ -17,24 +17,27 @@ function getById($id) {
     }
 }
 function update($item) {
+    
+
     global $PDO;
     $sql = "update item set ";
-    if($item['title']) {
-        $sql+=" title=".$item['title']." ";
+    if(array_key_exists('title',$item)) {
+        $sql.=" title='".$item['title']."' ,";
     }
-    if($item['content']) {
-        $sql+=" content=".$item['content']." ";
+    if(array_key_exists('content',$item)) {
+        $sql.=" content='".$item['content']."' ,";
     }
-    if($item['sign']) {
-        $sql+=" sign=".$item['sign']." ";
+    if(array_key_exists('sign',$item)) {
+        $sql.=" sign='".$item['sign']."' ,";
     }
-    if($item['isdel']) {
-        $sql+=" isdel=".$item['isdel']." ";
+    if(array_key_exists('isdel',$item)) {
+        $sql.=" isdel='".$item['isdel']."' ,";
     }
-    if($item['update']) {
-        $sql+=" update=".$item['update']." ";
+    if(array_key_exists('update',$item)) {
+        $sql.=" update='".$item['update']."' ,";
     }
-    $sql+=" where id=".$item['id']." and note =".$item['note'];
+    $sql = substr($sql,0,-1);
+    $sql.=" where id=".$item['id']." and note =".$item['note'];
 
     return $PDO->exec($sql);
 }
@@ -47,7 +50,6 @@ function insert($item) {
     $template->bindValue(2,$item['note']);
     $template->bindValue(3,$item['title']);
     $template->bindValue(4,$item['content']);
-    
     return $template->execute();
 }
 function remote($id) {
@@ -74,6 +76,5 @@ function getByLimitNumber($item) {
     $sql = "select count(*) as lognumber from item where isdel=0 and user=".$item['user'];
     $res = $PDO->query($sql);
     $res->setFetchMode(PDO::FETCH_ASSOC);
-
     return $res->fetch();
 }

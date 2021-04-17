@@ -92,11 +92,12 @@ $(function() {
                 title:item_data.title,
                 content:item_data.content
             };
-            console.log(update_data);
             var state = request("post","php_service/play/play_update.php",update_data);
-            if(state) {
+            if(state.code == 666) {
                 console.log(state);
                 alert("更新成功！");
+            }else {
+                alert("更新失败！");
             }
         });
     }else {

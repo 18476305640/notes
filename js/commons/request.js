@@ -33,7 +33,7 @@ export default function(method,url,data,waitNumber="600") {
     }
     var obj = {
         ajaxResult:$.ajax({
-            url:"http://localhost/"+url,
+            url:"/"+url,
             type:method,
             data:data,
             dataType:'json',
